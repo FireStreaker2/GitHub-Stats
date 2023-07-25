@@ -18,9 +18,9 @@ export default function SearchBar() {
     return (
         <main className={`${styles.searchContainer} ${styles.container}`}>
             <form className={styles.searchForm} onSubmit={handleSubmit}>
-                <p>Show Stats For</p>
+                <h1>Show Stats For</h1>
                 <input placeholder="Username/Repository" className={styles.search} onChange={handleChange} />
-                <button>SHOW STATS</button>
+                <button className={styles.button}>SHOW STATS</button>
             </form>
         </main>
     )

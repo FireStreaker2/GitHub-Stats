@@ -1,7 +1,6 @@
 .main {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
@@ -26,22 +25,73 @@
 }
 
 .container {
-  background-color: #635e5e;
+  background-color: #656363;
 }
 
 .searchContainer {
   width: 60%;
+  margin: 2rem;
+  height: 30vh;
 }
 
 .searchForm {
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 1rem;
+  justify-content: space-around ;
+  height: 100%;
 }
 
 .search {
   text-align: center;
+  height: 5rem;
+  font-size: x-large;
+}
+
+.button {
+  width: 30%;
+  margin: 0 auto;
+  height: 3rem;
+  border: none;
+  border-radius: 25px;
+}
+
+.tip {
+  display: flex;
+  height: 5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.featuredProfiles {
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.featuredProfiles, .featuredProfile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.featuredProfile {
+  margin: 1rem;
+  height: 5rem;
+  width: 20rem;
+}
+
+.pfp {
+  width: 64px;
+  height: 64px;
+  margin: 0.5rem;
+}
+
+.profileContainer {
+  position: absolute;
+  left: 10%;
+  margin-top: 3rem;
+  width: 100%;
 }
 
 .statsContainer {
@@ -52,10 +102,25 @@
 .info {
   display: flex;
   flex-direction: column;
+  width: 260px;
 }
 
 .avatar {
   border-radius: 50%;
   width: 260px;
   height: 260px;
+}
+
+.stats {
+  margin-left: 5rem;
+  width: 60%;
+}
+
+.stats .title {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.stats * {
+  margin-left: 1rem;
 }

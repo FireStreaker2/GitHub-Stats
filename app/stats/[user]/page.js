@@ -2,29 +2,16 @@ import Image from "next/image";
 import styles from "/app/page.module.css";
 import NavBar from "/app/components/NavBar";
 
-async function retrieve(user) {
-  const api = `https://api.github.com/users/${user}`;
-  
-  const response = await fetch(api);
-  
-  if (!response.ok) {
-    return "404";
-  }
-  
-  const res = await response.json();
-  return res;
-}
-  
-
 export default async function User({ params }) {
   const user = params.user;
-  const data = await retrieve(user);
+  const response = await fetch(`https://api.github.com/users/${user}`);
+  const data = await response.json();
 
   return (
     <main className={styles.main}>
       <NavBar />
-      <div>{data ?
-        <div className={`${styles.statsContainer} ${styles.container}`}>
+      <div className={styles.profileContainer}>{data ?
+        <div className={styles.statsContainer}>
             <div className={styles.info}>
                 <img src={data.avatar_url} className={styles.avatar} />
                 <h1>{data.name}</h1>
@@ -38,11 +25,13 @@ export default async function User({ params }) {
                 <p>Location: {data.location ? data.location : "None"}</p>
                 <a href={data.email ? `mailto:${data.email}` : ""}>{data.email ? data.email : ""}</a>
                 <p>Account created at: {data.created_at}</p>
-
             </div>
-            {/* <div className={`${styles.stats} ${styles.container}`}>
-                <p>hi</p>
-            </div> */}
+
+            <div className={`${styles.stats} ${styles.container}`}>
+                <h1 className={styles.title}>Stats</h1>
+                <p>Repositories: {data.public_repos}</p>
+                <p>Gists: {data.public_gists}</p>
+            </div>
         </div>
         : "Loading..."}
       </div>
