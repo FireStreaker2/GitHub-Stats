@@ -8,7 +8,9 @@ export default function SearchBar() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        window.location.href = `/stats/${query}`;
+        if (query) {
+            window.location.href = `/stats/${query}`;
+        }
     }
 
     const handleChange = (event) => {

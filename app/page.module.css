@@ -17,11 +17,17 @@
   top: 0;
   font-size: x-large;
   align-items: center;
-  justify-content: right;
+  justify-content: space-between;
 }
 
 .navBar a {
   margin: 0.5rem;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
@@ -42,18 +48,47 @@
   height: 100%;
 }
 
-.search {
+.search, .navBarSearch {
   text-align: center;
   height: 5rem;
   font-size: x-large;
 }
 
+.navBarForm {
+  display: flex;
+  justify-content: center;
+}
+
+.navBarSearch {
+  height: 3rem;
+}
+
+.searchSVG {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 .button {
+  background-color: #393535;
   width: 30%;
   margin: 0 auto;
   height: 3rem;
   border: none;
   border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.button:hover, .featuredProfile:hover {
+  transform: scale(1.1);
+}
+
+.button:active {
+  background-color: #000;
+}
+
+.navBarButton {
+  cursor: pointer;
 }
 
 .tip {
@@ -61,6 +96,10 @@
   height: 5rem;
   justify-content: center;
   align-items: center;
+}
+
+.tip p {
+  color: #fff;
 }
 
 .featuredProfiles {
@@ -79,12 +118,21 @@
   margin: 1rem;
   height: 5rem;
   width: 20rem;
+  transition: transform 0.2s;
+}
+
+.featuredProfile h1, .featuredProfile p {
+  color: #fff;
 }
 
 .pfp {
-  width: 64px;
-  height: 64px;
   margin: 0.5rem;
+}
+
+.language {
+  margin: 0.5rem;
+  height: 64px;
+  width: 64px;
 }
 
 .profileContainer {
@@ -107,8 +155,6 @@
 
 .avatar {
   border-radius: 50%;
-  width: 260px;
-  height: 260px;
 }
 
 .stats {

@@ -1,8 +1,8 @@
-import Image from "next/image";
 import styles from "./page.module.css";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/client/NavBar";
 import SearchBar from "./components/client/SearchBar";
 import FeaturedProfile from "./components/FeaturedProfile";
+import FeaturedRepo from "./components/FeaturedRepo";
 
 export default function Home() {
   return (
@@ -15,11 +15,11 @@ export default function Home() {
 
       <div className={styles.featuredProfiles}>
         <FeaturedProfile user="FireStreaker2" />
-        <FeaturedProfile user="github" />
-        <FeaturedProfile user="torvalds" />
-        <FeaturedProfile user="archlinux" />
         <FeaturedProfile user="vercel" />
-        <FeaturedProfile user="facebook" />
+        <FeaturedProfile user="torvalds" />
+        <FeaturedRepo userRepo="FireStreaker2/STE" />
+        <FeaturedRepo userRepo="vercel/next.js" />
+        <FeaturedRepo userRepo="torvalds/linux" />
       </div>
     </main>
   )
