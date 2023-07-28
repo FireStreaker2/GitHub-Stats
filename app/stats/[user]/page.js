@@ -1,11 +1,27 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "/app/page.module.css";
 import NavBar from "/app/components/client/NavBar";
+import { redirect } from "next/navigation";
+
+export async function generateMetadata({ params }) {
+  const user = params.user;
+
+  return {
+    title: `${user} | GitHub Stats`,
+  }
+}
 
 export default async function User({ params }) {
   const user = params.user;
   const response = await fetch(`https://api.github.com/users/${user}`);
+
+  if (!response.ok) {
+    redirect("/404");
+  }
+
   const data = await response.json();
+
 
   return (
     <main className={styles.main}>
@@ -15,15 +31,15 @@ export default async function User({ params }) {
           <div className={styles.info}>
             <Image src={data.avatar_url} width={260} height={260} alt={`${user}'s Profile Picture`} className={styles.avatar} />
             <h1>{data.name}</h1>
-            <a href={data.html_url}>{data.login}</a>
+            <Link href={data.html_url}>{data.login}</Link>
             <p>Followers: {data.followers}</p>
             <p>Following: {data.following}</p>
             <p>{data.bio ? data.bio : ""}</p>
             <h2>Info</h2>
             <p>Company: {data.company ? data.company : "None" }</p>
-            <a href={data.blog ? data.blog : ""}>{data.blog ? `Blog: ${data.blog}` : ""}</a>
+            <Link href={data.blog ? data.blog : ""}>{data.blog ? `Blog: ${data.blog}` : ""}</Link>
             <p>Location: {data.location ? data.location : "None"}</p>
-            <a href={data.email ? `mailto:${data.email}` : ""}>{data.email ? data.email : ""}</a>
+            <Link href={data.email ? `mailto:${data.email}` : ""}>{data.email ? data.email : ""}</Link>
             <p>Account created at: {data.created_at}</p>
           </div>
 

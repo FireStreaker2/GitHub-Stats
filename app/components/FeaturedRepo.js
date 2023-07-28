@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "../page.module.css";
 import LanguageLogo from "./LanguageLogo";
 
@@ -11,11 +12,11 @@ export default async function FeaturedRepo(props) {
   const language = data.language;
   
   return (
-    <a className={`${styles.container} ${styles.featuredProfile}`} href={`/stats/${userRepo}`}>
+    <Link className={`${styles.container} ${styles.featuredProfile}`} href={`/stats/${userRepo}`}>
       {response ? (
         <>
           <div>
-            <LanguageLogo language={language} />
+            <LanguageLogo language={language} className={styles.language} />
           </div>
           <div>
             <h1>{name}</h1>
@@ -25,6 +26,6 @@ export default async function FeaturedRepo(props) {
       ) : (
         <p>Loading Repository...</p>
       )}
-    </a>
+    </Link>
   )
 }

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../page.module.css";
 
 export default async function FeaturedProfile(props) {
@@ -10,7 +11,7 @@ export default async function FeaturedProfile(props) {
   const name = data.name;
 
   return (
-    <a className={`${styles.container} ${styles.featuredProfile}`} href={`/stats/${user}`}>
+    <Link className={`${styles.container} ${styles.featuredProfile}`} href={`/stats/${user}`}>
       {response ? (
         <>
           <div>
@@ -24,6 +25,6 @@ export default async function FeaturedProfile(props) {
       ) : (
         <p>Loading Profile...</p>
       )}
-    </a>
+    </Link>
   )
 }

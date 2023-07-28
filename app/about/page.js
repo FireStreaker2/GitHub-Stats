@@ -1,6 +1,9 @@
-import Image from "next/image";
 import styles from "../page.module.css";
 import NavBar from "../components/client/NavBar";
+
+export const metadata = {
+  title: "About | GitHub Stats",
+}
 
 export default function About() {
   return (

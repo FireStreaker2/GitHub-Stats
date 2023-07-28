@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import styles from "../../page.module.css";
 import { useState } from "react";
 
@@ -19,7 +20,7 @@ export default function NavBar() {
 
   return (
     <main className={styles.navBar}>
-      <a href="/" className={styles.logo}>
+      <Link href="/" className={styles.logo}>
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="64.000000pt" height="64.000000pt" viewBox="0 0 64.000000 64.000000" preserveAspectRatio="xMidYMid meet">
           <g transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
             <path d="M270 504 c-69 -58 -132 -112 -140 -122 -8 -9 -4 -7 10 4 14 12 80 67 148 123 67 55 119 101 115 101 -4 -1 -64 -48 -133 -106z"/>
@@ -27,7 +28,7 @@ export default function NavBar() {
           </g>
         </svg>
         <p>GitHub Stats</p>
-      </a>
+      </Link>
       <form className={styles.navBarForm} onSubmit={handleSubmit}>
         <input placeholder="Username/Repository" className={styles.navBarSearch} onChange={handleChange} />
         <button type="submit" className={styles.navBarButton}>
@@ -38,9 +39,9 @@ export default function NavBar() {
         </button>
       </form>
       <div>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/settings">Settings</a>
+        <Link href="/">Home</Link>
+        <Link href="/about">About</Link>
+        <Link href="/settings">Settings</Link>
       </div>
     </main>
   )
