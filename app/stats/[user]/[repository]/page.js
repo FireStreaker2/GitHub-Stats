@@ -16,16 +16,17 @@ export async function generateMetadata({ params }) {
 export default async function Repository({ params }) {
   const user = params.user;
   const repository = params.repository;
+
   const response = await fetch(`https://api.github.com/repos/${user}/${repository}`);
 
   if (!response.ok) {
     redirect("/404");
   }
-
-  const data = await response.json();
+  
+  const data = !response.ok ? "N/A" : await response.json();
 
   const languages = await fetch(data.languages_url);
-  const languagesData = !response.ok ? "N/A" : await languages.json();
+  const languagesData = !languages.ok ? "N/A" : await languages.json();
     
   return (
     <main className={styles.main}>

@@ -176,6 +176,10 @@
   margin-top: 0.5rem;
 }
 
+.organizations, .organizations *, .repositories * {
+  margin: 0;
+}
+
 .repositoryLanguage {
   height: 260px;
   width: 260px;
@@ -211,8 +215,4 @@
   width: 50%;
   height: 3rem;
   background-color: var(--select-background);
-}
-
-.featuredProfileToggle {
-  cursor: pointer;
 }

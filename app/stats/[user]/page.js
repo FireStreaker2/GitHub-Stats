@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "/app/page.module.css";
 import NavBar from "/app/components/client/NavBar";
+import Organization from "@/app/components/Organization";
 import { redirect } from "next/navigation";
 
 export async function generateMetadata({ params }) {
@@ -14,14 +15,20 @@ export async function generateMetadata({ params }) {
 
 export default async function User({ params }) {
   const user = params.user;
+
   const response = await fetch(`https://api.github.com/users/${user}`);
 
   if (!response.ok) {
     redirect("/404");
   }
 
-  const data = await response.json();
+  const data = !response.ok ? "N/A" : await response.json();
 
+  const orgs = await fetch(data.organizations_url);
+  const orgsData = !orgs ? "N/A" : await orgs.json();
+
+  const repos = await fetch (data.repos_url);
+  const reposData = !repos ? "N/A" : await repos.json();
 
   return (
     <main className={styles.main}>
@@ -45,8 +52,30 @@ export default async function User({ params }) {
 
           <div className={`${styles.stats} ${styles.container}`}>
             <h1 className={styles.title}>Stats</h1>
-            <p>Repositories: {data.public_repos}</p>
+            <p>Repository Count: {data.public_repos}</p>
             <p>Gists: {data.public_gists}</p>
+            <div>Organizations: 
+              {orgsData.length !== 0 ? (
+              <div className={styles.organizations}>
+                {orgsData.map((item) => (
+                  <Organization avatar={item.avatar_url} login={item.login} />
+                ))}
+              </div>
+              ) : (
+                " None"
+              )}
+            </div>
+            <div>Repositories:
+              {data.public_repos === 0 ? (
+                "None"
+              ) : (
+                <div className={styles.repositories}>
+                  {reposData.map((item) => (
+                    <Link href={`/stats/${item.full_name}`}>{item.name}, </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
         : "Loading..."}
