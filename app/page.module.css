@@ -9,8 +9,7 @@
 .navBar {
   display: flex;
   flex-direction: row;
-  background-color: #312c2c;
-  color: #fff;
+  background-color: var(--navbar-background);
   width: 100%;
   height: 10vh;
   position: absolute;
@@ -31,7 +30,9 @@
 }
 
 .container {
-  background-color: #656363;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--container-background);
 }
 
 .searchContainer {
@@ -46,14 +47,13 @@
   text-align: center;
   justify-content: space-around ;
   height: 100%;
-  color: white;
 }
 
 .search, .navBarSearch {
   text-align: center;
   height: 5rem;
   font-size: x-large;
-  background-color: #3a3939;
+  background-color: var(--search-background);
   border: none;
 }
 
@@ -69,16 +69,15 @@
 .searchSVG {
   width: 100%;
   height: 100%;
-  background-color: #656363;
+  background-color: var(--search-svg-background);
 }
 
 .searchSVG path {
-  fill: #fff;
+  fill: var(--font-color);
 }
 
 .button {
-  background-color: #393535;
-  color: #fff;
+  background-color: var(--button-background);
   width: 30%;
   margin: 0 auto;
   height: 3rem;
@@ -93,7 +92,7 @@
 }
 
 .button:active {
-  background-color: #000;
+  background-color: var(--button-active-background);
 }
 
 .navBarButton {
@@ -109,10 +108,6 @@
   height: 5rem;
   justify-content: center;
   align-items: center;
-}
-
-.tip p {
-  color: #fff;
 }
 
 .featuredProfiles {
@@ -132,10 +127,6 @@
   height: 5rem;
   width: 20rem;
   transition: transform 0.2s;
-}
-
-.featuredProfile h1, .featuredProfile p {
-  color: #fff;
 }
 
 .pfp {
@@ -200,8 +191,28 @@
   width: 16px;
 }
 
-.aboutContainer {
+.aboutContainer, .settingsContainer {
   width: 90%;
   height: 80vh;
   margin-top: 1rem;
+}
+
+.settingsContainer {
+  text-align: center;
+  align-items: center;
+}
+
+.settingsContainer h2 {
+  margin: 1rem;
+}
+
+.themes {
+  text-align: center;
+  width: 50%;
+  height: 3rem;
+  background-color: var(--select-background);
+}
+
+.featuredProfileToggle {
+  cursor: pointer;
 }

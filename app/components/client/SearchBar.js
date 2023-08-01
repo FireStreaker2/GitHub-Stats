@@ -2,14 +2,16 @@
 
 import styles from "/app/page.module.css";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function SearchBar() {
+    const router = useRouter();
     const [query, setQuery] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if (query) {
-            window.location.href = `/stats/${query}`;
+            router.push(`/stats/${query}`);
         }
     }
 
