@@ -22,7 +22,7 @@ export default async function Repository({ params }) {
   if (!response.ok) {
     redirect("/404");
   }
-  
+
   const data = !response.ok ? "N/A" : await response.json();
 
   const languages = await fetch(data.languages_url);
@@ -41,10 +41,10 @@ export default async function Repository({ params }) {
               <p>{data.description}</p>
               <p>{data.homepage ? `Homepage: ${data.homepage}` : ""}</p>
               <h2>Info</h2>
-              {data.license.url ? (
+              {data.license && data.license.url ? (
                 <Link href={data.license.url}>License: {data.license.name}</Link>
               ) : (
-                <p>License: {data.license.name}</p>
+                <p>License: Other</p>
               )}
               <p>Created: {data.created_at}</p>
             </div>

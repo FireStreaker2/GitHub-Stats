@@ -54,11 +54,11 @@ export default async function User({ params }) {
             <h1 className={styles.title}>Stats</h1>
             <p>Repository Count: {data.public_repos}</p>
             <p>Gists: {data.public_gists}</p>
-            <div>Organizations: 
+            <div>Organizations:
               {orgsData.length !== 0 ? (
               <div className={styles.organizations}>
                 {orgsData.map((item) => (
-                  <Organization avatar={item.avatar_url} login={item.login} />
+                  <Organization key={orgsData.indexOf(item)} avatar={item.avatar_url} login={item.login} />
                 ))}
               </div>
               ) : (
@@ -71,7 +71,7 @@ export default async function User({ params }) {
               ) : (
                 <div className={styles.repositories}>
                   {reposData.map((item) => (
-                    <Link href={`/stats/${item.full_name}`}>{item.name}, </Link>
+                    <Link key={reposData.indexOf(item)} href={`/stats/${item.full_name}`}>{item.name}, </Link>
                   ))}
                 </div>
               )}

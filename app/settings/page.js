@@ -14,13 +14,16 @@ export default function Settings() {
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
+    document.title = "Settings | GitHub Stats";
     if (storedTheme) {
       setTheme(storedTheme);
     }
   }, [])
-
-  document.documentElement.setAttribute("data-theme", theme);
-  document.title = "Settings | GitHub Stats";
+  
+  if (typeof window == "object") {
+    document.documentElement.setAttribute("data-theme", theme);
+  }
+  
   return (
     <main className={styles.main}>
       <NavBar />
