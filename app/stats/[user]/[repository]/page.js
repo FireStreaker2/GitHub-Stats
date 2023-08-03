@@ -37,16 +37,16 @@ export default async function Repository({ params }) {
             <div className={styles.info}>
               <LanguageLogo language={data.language} className={styles.repositoryLanguage} />
               <h1>{data.name}</h1>
-              <Link href={data.html_url}>{data.full_name}</Link>
-              <p>{data.description}</p>
+              <Link href={data.html_url} target="_blank">{data.full_name}</Link>
+              <p className={styles.description}>{data.description}</p>
               <p>{data.homepage ? `Homepage: ${data.homepage}` : ""}</p>
               <h2>Info</h2>
               {data.license && data.license.url ? (
-                <Link href={data.license.url}>License: {data.license.name}</Link>
+                <Link href={data.license.url} target="_blank">License: {data.license.name}</Link>
               ) : (
                 <p>License: Other</p>
               )}
-              <p>Created: {data.created_at}</p>
+              <p>Created: {data.created_at.split("T")[0]}</p>
             </div>
 
             <div className={`${styles.stats} ${styles.container}`}>
@@ -63,6 +63,33 @@ export default async function Repository({ params }) {
               <div className={styles.iconContainer}>
                 <svg className={styles.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="M256,369.8v28.4c15.7,0,28.4,12.8,28.4,28.4c0,15.7-12.8,28.4-28.4,28.4c-15.7,0-28.4-12.8-28.4-28.4 c0-15.7,12.8-28.4,28.4-28.4V369.8v-28.4c-47.1,0-85.3,38.2-85.3,85.3c0,47.1,38.2,85.3,85.3,85.3c47.1,0,85.3-38.2,85.3-85.3 c0-47.1-38.2-85.3-85.3-85.3V369.8z"/><path d="M113.8,28.4v28.4c15.7,0,28.4,12.8,28.4,28.4c0,15.7-12.8,28.4-28.4,28.4c-15.7,0-28.4-12.8-28.4-28.4 c0-15.7,12.8-28.4,28.4-28.4V28.4V0C66.6,0,28.5,38.2,28.4,85.3c0,47.1,38.2,85.3,85.3,85.3c47.1,0,85.3-38.2,85.3-85.3 c0-47.1-38.2-85.3-85.3-85.3V28.4z"/><path d="M398.2,28.4v28.4c15.7,0,28.4,12.8,28.4,28.4c0,15.7-12.8,28.4-28.4,28.4c-15.7,0-28.4-12.8-28.4-28.4 c0-15.7,12.8-28.4,28.4-28.4V28.4V0c-47.1,0-85.3,38.2-85.3,85.3c0,47.1,38.2,85.3,85.3,85.3c47.1,0,85.3-38.2,85.3-85.3 c0-47.1-38.2-85.3-85.3-85.3V28.4z"/><path d="M85.3,142.2v56.9c0,47.1,38.2,85.3,85.3,85.3h170.7c47.1,0,85.3-38.2,85.3-85.3v-56.9c0-15.7-12.7-28.4-28.4-28.4 s-28.4,12.7-28.4,28.4v56.9c0,15.7-12.8,28.4-28.4,28.4H170.7c-15.7,0-28.4-12.8-28.4-28.4l0-56.9c0-15.7-12.7-28.4-28.4-28.4 S85.3,126.5,85.3,142.2z"/><path d="M227.6,256v113.8c0,15.7,12.7,28.4,28.4,28.4c15.7,0,28.4-12.7,28.4-28.4V256c0-15.7-12.7-28.4-28.4-28.4 C240.3,227.6,227.6,240.3,227.6,256"/></g></svg>
                 <p>Forks: {data.forks}</p>
+              </div>
+              <p>Last Updated: {data.updated_at.split("T")[0]}</p>
+              <p>Default Branch Name: {data.default_branch}</p>
+              <div>Topics: {" "}
+                {data.topics.map((item, index) => (
+                  <>
+                    <Link href={`https://github.com/topics/${item}`} target="_blank">{item}</Link>
+                    {index !== data.topics.length - 1 && ", "}
+                  </>
+                ))}
+              </div>
+              <div>
+                Others: {" "}
+                {[
+                  data.has_issues && "Has Issues",
+                  data.has_projects && "Has Projects",
+                  data.has_downloads && "Has Downloads",
+                  data.has_wiki && "Has Wiki",
+                  data.has_pages && "Has Pages",
+                  data.has_discussions && "Has Discussions"
+                ].filter(Boolean).join(", ")}
+              </div>
+              <div className={styles.links}>
+                <p>Git URL: {data.git_url}</p>
+                <p>SSH URL: {data.ssh_url}</p>
+                <p>Clone URL: {data.clone_url}</p>
+                <p>SVN URL: {data.svn_url}</p>
               </div>
             </div>
           </div>

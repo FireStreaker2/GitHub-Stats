@@ -41,13 +41,13 @@ export default async function User({ params }) {
             <Link href={data.html_url}>{data.login}</Link>
             <p>Followers: {data.followers}</p>
             <p>Following: {data.following}</p>
-            <p>{data.bio ? data.bio : ""}</p>
+            <p className={styles.description}>{data.bio ? data.bio : ""}</p>
             <h2>Info</h2>
             <p>Company: {data.company ? data.company : "None" }</p>
             <Link href={data.blog ? data.blog : ""}>{data.blog ? `Blog: ${data.blog}` : ""}</Link>
             <p>Location: {data.location ? data.location : "None"}</p>
             <Link href={data.email ? `mailto:${data.email}` : ""}>{data.email ? data.email : ""}</Link>
-            <p>Account created at: {data.created_at}</p>
+            <p>Account created at: {data.created_at.split("T")[0]}</p>
           </div>
 
           <div className={`${styles.stats} ${styles.container}`}>
@@ -70,8 +70,11 @@ export default async function User({ params }) {
                 "None"
               ) : (
                 <div className={styles.repositories}>
-                  {reposData.map((item) => (
-                    <Link key={reposData.indexOf(item)} href={`/stats/${item.full_name}`}>{item.name}, </Link>
+                  {reposData.map((item, index) => (
+                    <>
+                      <Link key={reposData.indexOf(item)} href={`/stats/${item.full_name}`}>{item.name}</Link>
+                      {index !== reposData.length - 1 && ", "}
+                    </>
                   ))}
                 </div>
               )}

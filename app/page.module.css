@@ -35,6 +35,14 @@
   background-color: var(--container-background);
 }
 
+.container a {
+  margin-left: 0;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
 .searchContainer {
   width: 60%;
   margin: 2rem;
@@ -180,9 +188,19 @@
   margin: 0;
 }
 
+.repositories {
+  word-wrap: break-word;
+}
+
 .repositoryLanguage {
   height: 260px;
   width: 260px;
+}
+
+.description {
+  margin: 1rem;
+  margin-left: 0;
+  font-size: large;
 }
 
 .iconContainer {
@@ -193,6 +211,13 @@
 .icon {
   height: 16px;
   width: 16px;
+}
+
+.links {
+  position: absolute;
+  bottom: 0;
+  margin-left: 0;
+  margin-bottom: 1rem;
 }
 
 .aboutContainer, .settingsContainer {

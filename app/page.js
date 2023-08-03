@@ -17,7 +17,7 @@ export default function Home() {
         <FeaturedProfile user="FireStreaker2" />
         <FeaturedProfile user="vercel" />
         <FeaturedProfile user="torvalds" />
-        <FeaturedRepo userRepo="FireStreaker2/STE" />
+        <FeaturedRepo userRepo="FireStreaker2/GitHub-Stats" />
         <FeaturedRepo userRepo="vercel/next.js" />
         <FeaturedRepo userRepo="torvalds/linux" />
       </div>
