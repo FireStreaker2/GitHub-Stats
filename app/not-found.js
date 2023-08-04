@@ -13,7 +13,7 @@ export default function NotFound() {
       <div className={`${styles.container} ${styles.notFoundContainer}`}>
         <h1>404</h1>
         <h2>The page you were looking for was not found.</h2>
-        <p>If you got redirected here from searching up something, chances are it's either private or does not exist.</p>
+        <p>If you got redirected here from searching up something, chances are it&apos;s either private or does not exist.</p>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.000000 512.000000">
           <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
             <path d="M222 4645 c-97 -30 -172 -111 -192 -208 -7 -36 -10 -621 -8 -1907 l3 -1855 21 -46 c27 -58 85 -116 143 -143 l46 -21 2325 0 2325 0 46 21 c58 27 116 85 143 143 l21 46 0 1885 0 1885 -21 46 c-27 58 -85 116 -143 143 l-46 21 -2310 2 c-1919 1 -2317 -1 -2353 -12z m4655 -165 c61 -37 64 -51 61 -342 l-3 -263 -2375 0 -2375 0 -3 263 c-3 291 0 305 61 342 31 20 68 20 2317 20 2249 0 2286 0 2317 -20z m61 -2263 c2 -1655 7 -1536 -61 -1577 -31 -20 -68 -20 -2315 -20 -2523 0 -2321 -5 -2362 63 -20 31 -20 62 -20 1528 0 823 3 1499 7 1502 3 4 1073 6 2377 5 l2371 -3 3 -1498z"/>

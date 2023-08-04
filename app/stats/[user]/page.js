@@ -10,6 +10,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `${user} | GitHub Stats`,
+    description: `A simple website to check the stats for GitHub. See ${user}'s stats on GitHub now.`,
   }
 }
 
