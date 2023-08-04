@@ -220,7 +220,7 @@
   margin-bottom: 1rem;
 }
 
-.aboutContainer, .settingsContainer {
+.aboutContainer, .settingsContainer, .notFoundContainer {
   width: 90%;
   height: 80vh;
   margin-top: 1rem;
@@ -240,4 +240,13 @@
   width: 50%;
   height: 3rem;
   background-color: var(--select-background);
+}
+
+.notFoundContainer {
+  text-align: center;
+}
+
+.notFoundReturnText {
+  font-size: x-large;
+  text-decoration: underline;
 }
